@@ -1,30 +1,43 @@
+import 'package:fire_riverpod_playground/general_providers.dart';
 import 'package:fire_riverpod_playground/repositories/base_auth_repository.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
+import 'custom_exception.dart';
+
 class AuthRepository implements BaseAuthRepository {
-  final Reader _reader;
-  const AuthRepository(this._reader);
+  final Reader _read;
+  const AuthRepository(this._read);
 
   @override
-  // TODO: implement authStateChanges
-  Stream<User?> get authStateChanges => throw UnimplementedError();
+  Stream<User?> get authStateChanges =>
+      _read(firebaseAuthProvider).authStateChanges();
 
   @override
   User? getCurrentUser() {
-    // TODO: implement getCurrentUser
-    throw UnimplementedError();
+    try {
+    return _read(firebaseAuthProvider).currentUser;
+    } on FirebaseAuthException catch (error) {
+      throw CustomException(message: error.message);
+    }
   }
 
   @override
-  Future<void> signInAnoymously() {
-    // TODO: implement signInAnoymously
-    throw UnimplementedError();
+  Future<void> signInAnoymously() async {
+    try {
+      await _read(firebaseAuthProvider).signInAnonymously();
+    } on FirebaseAuthException catch (error) {
+      throw CustomException(message: error.message);
+    }
   }
 
   @override
-  Future<void> signOut() {
-    // TODO: implement signOut
-    throw UnimplementedError();
+  Future<void> signOut() async {
+    try {
+    await _read(firebaseAuthProvider).signOut();
+    await signInAnoymously();
+    } on FirebaseAuthException catch (error) {
+      throw CustomException(message: error.message);
+    }
   }
 }
