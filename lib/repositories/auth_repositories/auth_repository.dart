@@ -4,7 +4,7 @@ import 'package:fire_riverpod_playground/repositories/auth_repositories/base_aut
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-import 'custom_exception.dart';
+import '../custom_exception.dart';
 
 class AuthRepository implements BaseAuthRepository {
   final Reader _read;
