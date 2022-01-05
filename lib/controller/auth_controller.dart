@@ -1,8 +1,12 @@
 import 'dart:async';
-
 import 'package:fire_riverpod_playground/repositories/auth_repository_provider.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+
+// <Notifierクラスの型, 格納する状態の型>
+final authControllerProvider = StateNotifierProvider<AuthController, User?>(
+  (ref) => AuthController(ref.read)..appStarted(),
+);
 
 class AuthController extends StateNotifier<User?> {
   final Reader _read;
@@ -13,6 +17,23 @@ class AuthController extends StateNotifier<User?> {
     _authStateChangesSubsctiption?.cancel();
     _authStateChangesSubsctiption = _read(authRepositoryProvider)
         .authStateChanges
-        .listen((user) => state = user);
+        .listen((User? user) => state = user);
+  }
+
+  @override
+  void dispose() {
+    _authStateChangesSubsctiption?.cancel();
+    super.dispose();
+  }
+
+  void appStarted() async {
+    final user = _read(authRepositoryProvider).getCurrentUser();
+    if (user == null) {
+      await _read(authRepositoryProvider).signInAnoymously();
+    }
+  }
+
+  void signOut() async {
+    await _read(authRepositoryProvider).signOut();
   }
 }
