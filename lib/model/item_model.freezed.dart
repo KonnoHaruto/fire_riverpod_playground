@@ -183,6 +183,12 @@ class _$_Item with DiagnosticableTreeMixin implements _Item {
   Map<String, dynamic> toJson() {
     return _$$_ItemToJson(this);
   }
+
+  @override
+  Map<String, dynamic> toDocument() {
+    // TODO: implement toDocument
+    throw UnimplementedError();
+  }
 }
 
 abstract class _Item implements Item {
