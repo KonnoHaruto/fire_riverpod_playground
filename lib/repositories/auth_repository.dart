@@ -1,4 +1,4 @@
-import 'package:fire_riverpod_playground/general_providers.dart';
+import 'package:fire_riverpod_playground/firebase_instance_provider.dart';
 import 'package:fire_riverpod_playground/repositories/base_auth_repository.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';

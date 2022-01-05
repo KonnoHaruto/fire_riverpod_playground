@@ -12,6 +12,12 @@ class HomeScreen extends HookConsumerWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text('HomeScreen'),
+        leading: authControllerState != null 
+        ? IconButton(
+            onPressed: () => authControllerState.signOut(),
+            icon: const Icon(Icons.logout),
+          )
+        : null,
       ),
     );
   }
