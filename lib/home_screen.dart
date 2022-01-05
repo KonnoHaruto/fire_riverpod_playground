@@ -1,15 +1,17 @@
-import 'dart:html';
-
 import 'package:flutter/material.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-class HomeScreen extends StatelessWidget {
-  const HomeScreen({ Key? key }) : super(key: key);
+import 'package:fire_riverpod_playground/controller/auth_controller.dart';
+
+class HomeScreen extends HookConsumerWidget {
+  const HomeScreen({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final authControllerState = ref.watch(authControllerProvider.notifier);
     return Scaffold(
       appBar: AppBar(
-        title: const Text('home'),
+        title: const Text('HomeScreen'),
       ),
     );
   }
