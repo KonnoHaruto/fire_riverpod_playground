@@ -13,7 +13,7 @@ class ItemRepository implements BaseItemRepository {
 
   @override
   Future<String> createItem({
-    required String userId, 
+    required String userId,
     required Item item,
   }) async {
     try {
@@ -28,7 +28,7 @@ class ItemRepository implements BaseItemRepository {
 
   @override
   Future<void> deleteItem({
-    required String userId, 
+    required String userId,
     required String itemId,
   }) async {
     try {
@@ -44,9 +44,8 @@ class ItemRepository implements BaseItemRepository {
   @override
   Future<List<Item>> retriveItems({required String userId}) async {
     try {
-      final snap = await _read(firebaseFirestoreProvider)
-          .userListRef(userId)
-          .get();
+      final snap =
+          await _read(firebaseFirestoreProvider).userListRef(userId).get();
       return snap.docs.map((doc) => Item.fromDocument(doc)).toList();
     } on FirebaseException catch (error) {
       throw CustomException(message: error.message);
@@ -55,7 +54,7 @@ class ItemRepository implements BaseItemRepository {
 
   @override
   Future<void> updateItem({
-    required String userId, 
+    required String userId,
     required Item item,
   }) async {
     try {
