@@ -1,5 +1,6 @@
 import 'package:fire_riverpod_playground/firebase_instance_provider.dart';
 import 'package:fire_riverpod_playground/model/item_model.dart';
+import 'package:fire_riverpod_playground/extensions/firebase_firestore_extension.dart';
 import 'package:fire_riverpod_playground/repositories/custom_exception.dart';
 import 'package:fire_riverpod_playground/repositories/item_repositories/base_item_repository.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -17,9 +18,7 @@ class ItemRepository implements BaseItemRepository {
   }) async {
     try {
       final docRef = await _read(firebaseFirestoreProvider)
-          .collection('lists')
-          .doc(userId)
-          .collection('userList')
+          .userListRef(userId)
           .add(item.toDocument());
       return docRef.id;
     } on FirebaseException catch (error) {
@@ -34,9 +33,7 @@ class ItemRepository implements BaseItemRepository {
   }) async {
     try {
       await _read(firebaseFirestoreProvider)
-          .collection('lists')
-          .doc(userId)
-          .collection('userList')
+          .userListRef(userId)
           .doc(itemId)
           .delete();
     } on FirebaseException catch (error) {
@@ -48,9 +45,7 @@ class ItemRepository implements BaseItemRepository {
   Future<List<Item>> retriveItems({required String userId}) async {
     try {
       final snap = await _read(firebaseFirestoreProvider)
-          .collection('lists')
-          .doc(userId)
-          .collection('userList')
+          .userListRef(userId)
           .get();
       return snap.docs.map((doc) => Item.fromDocument(doc)).toList();
     } on FirebaseException catch (error) {
@@ -65,9 +60,7 @@ class ItemRepository implements BaseItemRepository {
   }) async {
     try {
       await _read(firebaseFirestoreProvider)
-          .collection('lists')
-          .doc(userId)
-          .collection('userList')
+          .userListRef(userId)
           .doc(item.id)
           .update(item.toDocument());
     } on FirebaseException catch (error) {
