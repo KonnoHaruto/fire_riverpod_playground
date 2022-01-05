@@ -129,8 +129,9 @@ class __$ItemCopyWithImpl<$Res> extends _$ItemCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_Item with DiagnosticableTreeMixin implements _Item {
-  const _$_Item({this.id, required this.name, this.obtained = false});
+class _$_Item extends _Item with DiagnosticableTreeMixin {
+  const _$_Item({this.id, required this.name, this.obtained = false})
+      : super._();
 
   factory _$_Item.fromJson(Map<String, dynamic> json) => _$$_ItemFromJson(json);
 
@@ -183,17 +184,12 @@ class _$_Item with DiagnosticableTreeMixin implements _Item {
   Map<String, dynamic> toJson() {
     return _$$_ItemToJson(this);
   }
-
-  @override
-  Map<String, dynamic> toDocument() {
-    // TODO: implement toDocument
-    throw UnimplementedError();
-  }
 }
 
-abstract class _Item implements Item {
+abstract class _Item extends Item {
   const factory _Item({String? id, required String name, bool obtained}) =
       _$_Item;
+  const _Item._() : super._();
 
   factory _Item.fromJson(Map<String, dynamic> json) = _$_Item.fromJson;
 

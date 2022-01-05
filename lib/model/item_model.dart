@@ -6,11 +6,23 @@ part 'item_model.g.dart';
 
 @freezed
 abstract class Item with _$Item {
+  const Item._();
+  
   const factory Item({
     String? id,
     required String name,
     @Default(false) bool obtained,
   }) = _Item;
 
+  // アローのみ
   factory Item.fromJson(Map<String, dynamic> json) => _$ItemFromJson(json);
+
+  factory Item.empty() => const Item(name: '');
+
+  factory Item.fromDocument(dynamic doc) {
+    final data = doc.data()!;
+    return Item.fromJson(data).copyWith(id: doc.id);
+  }
+
+  Map<String, dynamic> toDocument() => toJson()..remove('id');
 }
