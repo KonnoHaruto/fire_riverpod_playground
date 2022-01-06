@@ -1,7 +1,7 @@
 import 'package:fire_riverpod_playground/firebase_instance_provider.dart';
 import 'package:fire_riverpod_playground/model/item_model.dart';
 import 'package:fire_riverpod_playground/extensions/firebase_firestore_extension.dart';
-import 'package:fire_riverpod_playground/repositories/custom_exception.dart';
+import 'package:fire_riverpod_playground/exception/custom_exception.dart';
 import 'package:fire_riverpod_playground/repositories/item_repositories/base_item_repository.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -12,6 +12,7 @@ class ItemRepository implements BaseItemRepository {
   const ItemRepository(this._read);
 
   @override
+  // idをcontrollerに渡す
   Future<String> createItem({
     required String userId,
     required Item item,
@@ -41,6 +42,7 @@ class ItemRepository implements BaseItemRepository {
     }
   }
 
+  // itemのsnapshotをcontrollerに渡す。
   @override
   Future<List<Item>> retriveItems({required String userId}) async {
     try {
@@ -51,6 +53,7 @@ class ItemRepository implements BaseItemRepository {
       throw CustomException(message: error.message);
     }
   }
+
 
   @override
   Future<void> updateItem({
