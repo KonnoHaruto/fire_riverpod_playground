@@ -1,4 +1,4 @@
-import 'package:fire_riverpod_playground/model/item_model.dart';
+import '../../model/item_model.dart';
 
 abstract class BaseItemRepository {
   Future<List<Item>> retriveItems({required String userId});

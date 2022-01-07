@@ -1,8 +1,8 @@
-import 'package:fire_riverpod_playground/controller/item_list_controller/item_list_controller_provider.dart';
-import 'package:fire_riverpod_playground/exception/custom_exception.dart';
-import 'package:fire_riverpod_playground/model/item_model.dart';
-import 'package:fire_riverpod_playground/view/item_list_error.dart';
-import 'package:fire_riverpod_playground/view/item_tile.dart';
+import '../controller/item_list_controller/item_list_controller_provider.dart';
+import '../exception/custom_exception.dart';
+import '../model/item_model.dart';
+import 'item_list_error.dart';
+import 'item_tile.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 

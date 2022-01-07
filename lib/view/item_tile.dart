@@ -1,8 +1,9 @@
-import 'package:fire_riverpod_playground/controller/item_list_controller/item_list_controller_provider.dart';
-import 'package:fire_riverpod_playground/view/add_item_dialog.dart';
-import 'package:fire_riverpod_playground/view/item_list.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+
+import '../controller/item_list_controller/item_list_controller_provider.dart';
+import 'add_item_dialog.dart';
+import 'item_list.dart';
 
 class ItemTile extends HookConsumerWidget {
   const ItemTile({Key? key}) : super(key: key);

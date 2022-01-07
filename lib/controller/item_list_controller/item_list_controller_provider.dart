@@ -1,7 +1,8 @@
-import 'package:fire_riverpod_playground/controller/auth_controller/auth_controller_provider.dart';
-import 'package:fire_riverpod_playground/controller/item_list_controller/item_list_controller.dart';
-import 'package:fire_riverpod_playground/model/item_model.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+
+import '../../model/item_model.dart';
+import '../auth_controller/auth_controller_provider.dart';
+import 'item_list_controller.dart';
 
 final itemListControllerProvider = StateNotifierProvider<ItemListController, AsyncValue<List<Item>>>(
   (ref) {

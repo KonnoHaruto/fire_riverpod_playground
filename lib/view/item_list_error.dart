@@ -1,4 +1,4 @@
-import 'package:fire_riverpod_playground/controller/item_list_controller/item_list_controller_provider.dart';
+import '../controller/item_list_controller/item_list_controller_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 

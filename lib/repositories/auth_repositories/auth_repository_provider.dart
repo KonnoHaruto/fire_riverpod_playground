@@ -1,4 +1,4 @@
-import 'package:fire_riverpod_playground/repositories/auth_repositories/auth_repository.dart';
+import 'auth_repository.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 final authRepositoryProvider =

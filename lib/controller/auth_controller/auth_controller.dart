@@ -1,6 +1,6 @@
 import 'dart:async';
 
-import 'package:fire_riverpod_playground/repositories/auth_repositories/auth_repository_provider.dart';
+import '../../repositories/auth_repositories/auth_repository_provider.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 

@@ -1,6 +1,7 @@
-import 'package:fire_riverpod_playground/controller/auth_controller/auth_controller.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+
+import 'auth_controller.dart';
 
 
 // <Notifierクラスの型, 格納する状態の型>

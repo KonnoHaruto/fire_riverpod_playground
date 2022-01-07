@@ -1,7 +1,7 @@
-import 'package:fire_riverpod_playground/view/add_item_dialog.dart';
-import 'package:fire_riverpod_playground/controller/auth_controller/auth_controller_provider.dart';
-import 'package:fire_riverpod_playground/model/item_model.dart';
-import 'package:fire_riverpod_playground/view/item_list.dart';
+import 'add_item_dialog.dart';
+import '../controller/auth_controller/auth_controller_provider.dart';
+import '../model/item_model.dart';
+import 'item_list.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
