@@ -17,13 +17,14 @@ class ItemTile extends HookConsumerWidget {
       trailing: Checkbox(
         value: item.obtained,
         onChanged: (val) => ref
-        .read(itemListControllerProvider.notifier)
-        .updateItem(updatedItem: item.copyWith(obtained: !item.obtained)),
+            .read(itemListControllerProvider.notifier)
+            .updateItem(updatedItem: item.copyWith(obtained: !item.obtained)),
       ),
       // 処理はDialog側で行う。
       onTap: () => AddItemDialog.show(context, item),
       onLongPress: () => ref
-      .read(itemListControllerProvider.notifier).deleteItem(itemId: item.id!),
+          .read(itemListControllerProvider.notifier)
+          .deleteItem(itemId: item.id!),
     );
   }
 }

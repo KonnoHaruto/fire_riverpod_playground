@@ -41,6 +41,7 @@ class AddItemDialog extends HookConsumerWidget {
                 isUpdating
                     ? ref.read(itemListControllerProvider.notifier).updateItem(
                           updatedItem: item.copyWith(
+                            //trim -文字列の先頭と末尾から空白を削除するもの
                             name: textController.text.trim(),
                             obtained: item.obtained,
                           ),

@@ -6,7 +6,6 @@ import 'item_tile.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-// itemを保持
 final currentItemProvider = Provider<Item>((_) => throw UnimplementedError());
 
 class ItemList extends HookConsumerWidget {
@@ -27,7 +26,6 @@ class ItemList extends HookConsumerWidget {
               itemCount: items.length,
               itemBuilder: (BuildContext context, int index) {
                 final item = items[index];
-                // itemをoverrideで保持
                 return ProviderScope(
                   overrides: [currentItemProvider.overrideWithValue(item)],
                   child: const ItemTile(),

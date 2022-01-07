@@ -49,12 +49,16 @@ class ItemRepository implements BaseItemRepository {
     try {
       final snap =
           await _read(firebaseFirestoreProvider).userListRef(userId).get();
-      return snap.docs.map((doc) => Item.fromDocument(doc)).toList();
+
+      // QuerySnapshotの中身のidを更新してreturnする
+      return snap.docs.map((doc) {
+        return Item.fromDocument(doc);
+      }).toList();
+
     } on FirebaseException catch (error) {
       throw CustomException(message: error.message);
     }
   }
-
 
   @override
   Future<void> updateItem({
