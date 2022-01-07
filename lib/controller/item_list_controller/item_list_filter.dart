@@ -1,0 +1,4 @@
+enum ItemListFilter {
+  all,
+  obtained,
+}
