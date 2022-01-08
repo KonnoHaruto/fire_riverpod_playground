@@ -12,7 +12,6 @@ class ItemTile extends HookConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final item = ref.watch(currentItemProvider);
     return ListTile(
-      key: ValueKey(item.id),
       title: Text(item.name),
       trailing: Checkbox(
         value: item.obtained,
@@ -20,7 +19,6 @@ class ItemTile extends HookConsumerWidget {
             .read(itemListControllerProvider.notifier)
             .updateItem(updatedItem: item.copyWith(obtained: !item.obtained)),
       ),
-      // 処理はDialog側で行う。
       onTap: () => AddItemDialog.show(context, item),
       onLongPress: () => ref
           .read(itemListControllerProvider.notifier)

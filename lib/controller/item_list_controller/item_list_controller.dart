@@ -4,13 +4,13 @@ import '../../exception/custom_exception.dart';
 import '../../repositories/item_repositories/item_repositoriy_provider.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-
 // firestoreが非同期なためAsyncValueでラップ
 class ItemListController extends StateNotifier<AsyncValue<List<Item>>> {
   final Reader _read;
   final String? _userId;
 
-  ItemListController(this._read, this._userId) : super(const AsyncValue.loading()) {
+  ItemListController(this._read, this._userId)
+      : super(const AsyncValue.loading()) {
     if (_userId != null) {
       retriveItems();
     }

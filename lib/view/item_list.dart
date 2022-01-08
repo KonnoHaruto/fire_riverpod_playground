@@ -6,6 +6,7 @@ import 'item_tile.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
+// ProviderScopeで使用
 final currentItemProvider = Provider<Item>((_) => throw UnimplementedError());
 
 class ItemList extends HookConsumerWidget {
@@ -16,16 +17,23 @@ class ItemList extends HookConsumerWidget {
     final itemListState = ref.watch(itemListControllerProvider);
     return itemListState.when(
       data: (items) => items.isEmpty
-          ? const Center(
-              child: Text(
-                '＋ボタンを押してアイテムを追加',
-                style: TextStyle(fontSize: 20.0),
+          ? Center(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: const <Widget>[
+                  Text(
+                    '+ボタンを押してアイテムを追加',
+                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                  ),
+                  Icon(Icons.flutter_dash, size: 200),
+                ],
               ),
             )
           : ListView.builder(
               itemCount: items.length,
               itemBuilder: (BuildContext context, int index) {
                 final item = items[index];
+                // ProviderScope
                 return ProviderScope(
                   overrides: [currentItemProvider.overrideWithValue(item)],
                   child: const ItemTile(),

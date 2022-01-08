@@ -54,7 +54,6 @@ class ItemRepository implements BaseItemRepository {
       return snap.docs.map((doc) {
         return Item.fromDocument(doc);
       }).toList();
-
     } on FirebaseException catch (error) {
       throw CustomException(message: error.message);
     }
