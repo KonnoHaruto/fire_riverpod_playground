@@ -1,4 +1,0 @@
-enum ItemListFilter {
-  all,
-  obtained,
-}
